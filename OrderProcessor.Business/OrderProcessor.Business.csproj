@@ -9,8 +9,4 @@
     <ProjectReference Include="..\OrderProcessor.DTO\OrderProcessor.DTO.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Concrete\RuleHandlers\" />
-  </ItemGroup>
-
 </Project>
