@@ -1,7 +1,5 @@
 ﻿using OrderProcessor.DTO.Common;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace OrderProcessor.DTO
 {

@@ -2,10 +2,10 @@ using Xunit;
 
 namespace OrderProcessor.Business.Tests
 {
-    public class UnitTest1
+    public class OrderProcessorBusinessTests
     {
         [Fact]
-        public void Test1()
+        public void SubmitOrderTest()
         {
 
         }
