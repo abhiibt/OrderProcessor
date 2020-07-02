@@ -11,5 +11,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.5.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OrderProcessor.Business\OrderProcessor.Business.csproj" />
+    <ProjectReference Include="..\OrderProcessor.DTO\OrderProcessor.DTO.csproj" />
+  </ItemGroup>
+
 
 </Project>
