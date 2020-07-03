@@ -3,10 +3,7 @@ using OrderProcessor.Business.Concrete;
 using OrderProcessor.Business.Interfaces;
 using OrderProcessor.Business.Tests.TestData;
 using OrderProcessor.DTO;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Xunit;
 
 namespace OrderProcessor.Business.Tests.Concrete.RuleHandlers

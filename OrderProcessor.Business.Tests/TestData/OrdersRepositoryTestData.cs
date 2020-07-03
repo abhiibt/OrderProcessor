@@ -1,8 +1,6 @@
 ﻿using OrderProcessor.DTO;
 using OrderProcessor.DTO.Common;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace OrderProcessor.Business.Tests.TestData
 {
