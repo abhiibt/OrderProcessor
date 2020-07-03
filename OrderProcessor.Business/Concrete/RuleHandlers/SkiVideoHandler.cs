@@ -2,7 +2,7 @@
 using OrderProcessor.DTO.Common;
 using OrderProcessor.DTO;
 
-namespace OrderProcessor.Business.Tests.Concrete
+namespace OrderProcessor.Business.Concrete
 {
     public class SkiVideoHandler : IRuleHandler
     {
