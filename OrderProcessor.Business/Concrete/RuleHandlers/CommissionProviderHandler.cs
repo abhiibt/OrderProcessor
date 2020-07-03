@@ -28,7 +28,7 @@ namespace OrderProcessor.Business.Concrete
             //Generate shipping slip for physical product
             var raiseAgentPayment = $"Raise payment for the Agent {order.AgentId}";
             //set the step
-            orderItem.OrderProcessSteps = string.IsNullOrEmpty(orderItem.OrderProcessSteps) ? raiseAgentPayment : $",{raiseAgentPayment}";
+            orderItem.OrderProcessSteps = string.IsNullOrEmpty(orderItem.OrderProcessSteps) ? raiseAgentPayment : $"{orderItem.OrderProcessSteps},{raiseAgentPayment}";
             return orderItem;
         }
     }

@@ -32,15 +32,29 @@ namespace OrderProcessor.Business.Tests.Concrete.RuleHandlers
         }
 
         [Fact]
-        public void ProcessOrderItemIsSuccess()
+        public void ProcessOrderItemIsSuccessForGenerateSlipForShipment()
         {
             _mockShipmentProvider.Setup(shipment => shipment.GeneratePackagingShip(It.IsAny<Customer>()))
                .Returns($"Generate slip for {OrdersRepositoryTestData.OneItemOrderPassProductType(DTO.Common.Product.Book).FirstOrDefault().Customer.CustomerName}");
             var unitUnderTest = new BookHandler(_mockShipmentProvider.Object);
             var result = unitUnderTest.ProcessOrderItem(OrdersRepositoryTestData.OneItemOrderPassProductType(DTO.Common.Product.Book).FirstOrDefault(), 
                 OrdersRepositoryTestData.OneItemOrderPassProductType(DTO.Common.Product.Book).FirstOrDefault().OrderItems.FirstOrDefault());
+            var steps = result.OrderProcessSteps.Split(",");
             Assert.NotNull(result.OrderProcessSteps);
-            Assert.Contains($"Generate slip for {OrdersRepositoryTestData.OneItemOrderPassProductType(DTO.Common.Product.Book).FirstOrDefault().Customer.CustomerName} for shipment", result.OrderProcessSteps);
+            Assert.Contains($"Generate slip for {OrdersRepositoryTestData.OneItemOrderPassProductType(DTO.Common.Product.Book).FirstOrDefault().Customer.CustomerName} for shipment", steps[0]);
+        }
+
+        [Fact]
+        public void ProcessOrderItemIsSuccessForGenerateSlipForDuplicateForRoyalty()
+        {
+            _mockShipmentProvider.Setup(shipment => shipment.GeneratePackagingShip(It.IsAny<Customer>()))
+               .Returns($"Generate slip for {OrdersRepositoryTestData.OneItemOrderPassProductType(DTO.Common.Product.Book).FirstOrDefault().Customer.CustomerName}");
+            var unitUnderTest = new BookHandler(_mockShipmentProvider.Object);
+            var result = unitUnderTest.ProcessOrderItem(OrdersRepositoryTestData.OneItemOrderPassProductType(DTO.Common.Product.Book).FirstOrDefault(),
+                OrdersRepositoryTestData.OneItemOrderPassProductType(DTO.Common.Product.Book).FirstOrDefault().OrderItems.FirstOrDefault());
+            var steps = result.OrderProcessSteps.Split(",");
+            Assert.NotNull(result.OrderProcessSteps);
+            Assert.Contains($"Generate slip for {OrdersRepositoryTestData.OneItemOrderPassProductType(DTO.Common.Product.Book).FirstOrDefault().Customer.CustomerName} for shipment for royalty department", steps[1]);
         }
     }
 }

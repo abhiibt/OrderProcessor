@@ -32,12 +32,12 @@ namespace OrderProcessor.Business.Concrete
             //Generate shipping slip for physical product
             var generateShipmentSlip = $"{_shipmentProvider.GeneratePackagingShip(order.Customer)} for shipment";
             //set the step
-            orderItem.OrderProcessSteps = string.IsNullOrEmpty(orderItem.OrderProcessSteps) ? generateShipmentSlip : $",{generateShipmentSlip}";
+            orderItem.OrderProcessSteps = string.IsNullOrEmpty(orderItem.OrderProcessSteps) ? generateShipmentSlip : $"{orderItem.OrderProcessSteps},{generateShipmentSlip}";
 
             //Generate duplicate shipping slip for royalty department
-            var generateDuplicateShipmentSlip = $"{_shipmentProvider.GeneratePackagingShip(order.Customer)} for shipment";
+            var generateDuplicateShipmentSlip = $"{_shipmentProvider.GeneratePackagingShip(order.Customer)} for shipment for royalty department";
             //set the step
-            orderItem.OrderProcessSteps = $",{generateDuplicateShipmentSlip}";
+            orderItem.OrderProcessSteps = $"{orderItem.OrderProcessSteps},{generateDuplicateShipmentSlip}";
             return orderItem;
         }
     }

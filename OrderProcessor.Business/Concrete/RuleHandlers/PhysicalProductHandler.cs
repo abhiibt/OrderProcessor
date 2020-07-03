@@ -32,7 +32,7 @@ namespace OrderProcessor.Business.Concrete
             //Generate shipping slip for physical product
             var generateShipmentSlip = $"{_shipmentProvider.GeneratePackagingShip(order.Customer)} for shipment";
             //set the step
-            orderItem.OrderProcessSteps = string.IsNullOrEmpty(orderItem.OrderProcessSteps) ? generateShipmentSlip : $",{generateShipmentSlip}";
+            orderItem.OrderProcessSteps = string.IsNullOrEmpty(orderItem.OrderProcessSteps) ? generateShipmentSlip : $"{orderItem.OrderProcessSteps},{generateShipmentSlip}";
             return orderItem;
         }
     }
